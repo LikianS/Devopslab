@@ -1,0 +1,19 @@
+- name: Copy sample app
+  copy:
+    src: "{{ item }}"
+    dest: "/home/app-user/"
+    owner: app-user
+    group: app-user
+    mode: 0644
+  with_fileglob:
+    - "files/*"
+
+- name: Start sample app using PM2
+  shell: pm2 start app.config.js
+  args:
+    chdir: /home/app-user/
+  become_user: app-user
+
+- name: Save PM2 process list
+  shell: pm2 save
+  become_user: app-user

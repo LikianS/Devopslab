@@ -1,0 +1,32 @@
+- name: Add Node.js packages to yum
+  shell: curl -fsSL https://rpm.nodesource.com/setup_21.x | bash -
+
+- name: Install Node.js
+  yum:
+    name: nodejs
+
+- name: Create app user
+  user:
+    name: app-user
+
+- name: Install PM2
+  npm:
+    name: pm2
+    global: true
+
+# 1. On s'assure que tout le dossier de l'utilisateur lui appartient bien
+# (Cela corrige l'erreur EACCES mkdir)
+- name: Fix permissions for app-user home
+  file:
+    path: /home/app-user
+    state: directory
+    owner: app-user
+    group: app-user
+    recurse: yes
+
+# 2. On lance la commande PM2 startup directement en ROOT (sans 'su')
+# Ansible est déjà root grâce à 'become: yes', donc ça marchera direct.
+- name: Configure PM2 to run at startup
+  command: pm2 startup systemd -u app-user --hp /home/app-user
+  environment:
+    PATH: "/usr/local/bin:/usr/bin:/bin:{{ ansible_env.PATH }}"

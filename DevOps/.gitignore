@@ -1,0 +1,17 @@
+# Dépendances Node.js (TRÈS IMPORTANT)
+node_modules/
+
+# Logs
+npm-debug.log*
+
+# Fichiers d'environnement (Mots de passe)
+.env
+
+# Dossiers OpenTofu / Terraform
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.backup
+
+# Fichiers système
+.DS_Store
