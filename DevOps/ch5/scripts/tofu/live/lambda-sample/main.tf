@@ -3,7 +3,8 @@ provider "aws" {
 }
 
 module "function" {
-  source = "github.com/brikis98/devops-book//ch3/tofu/modules/lambda"
+  # Lien mis à jour vers VOTRE module lambda
+  source = "github.com/LikianS/Devopslab//DevOps/ch3/scripts/tofu/modules/lambda"
 
   name = var.name
 
@@ -20,7 +21,8 @@ module "function" {
 }
 
 module "gateway" {
-  source = "github.com/brikis98/devops-book//ch3/tofu/modules/api-gateway"
+  # Lien mis à jour vers VOTRE module api-gateway
+  source = "github.com/LikianS/Devopslab//DevOps/ch3/scripts/tofu/modules/api-gateway"
 
   name = var.name
   function_arn       = module.function.function_arn

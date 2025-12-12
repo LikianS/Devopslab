@@ -15,3 +15,7 @@ npm-debug.log*
 
 # Fichiers système
 .DS_Store
+
+.vscode-server/
+.config/
+node_modules/
