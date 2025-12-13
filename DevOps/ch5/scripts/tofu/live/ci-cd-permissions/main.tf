@@ -28,6 +28,6 @@ module "iam_roles" {
 
   # TODO: Attention ! Vous devez mettre ICI les noms uniques de VOTRE bucket et table
   # (ceux que vous avez créés dans le dossier tofu-state)
-  tofu_state_bucket         = "fundamentals-of-devops-tofu-state" 
-  tofu_state_dynamodb_table = "fundamentals-of-devops-tofu-state" 
+  tofu_state_bucket         = "devopslab-likian-state" 
+  tofu_state_dynamodb_table = "devopslab-likian-state" 
 }

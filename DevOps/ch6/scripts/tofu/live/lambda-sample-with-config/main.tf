@@ -3,11 +3,9 @@ provider "aws" {
 }
 
 module "function" {
-  # Lien mis à jour vers VOTRE module lambda
-  source = "../../../../../ch3/scripts/tofu/modules/lambda"
+  source = "github.com/brikis98/devops-book//ch3/tofu/modules/lambda"
 
-  name = var.name
-
+  name    = var.name
   src_dir = "${path.module}/src"
   runtime = "nodejs20.x"
   handler = "index.handler"
@@ -17,14 +15,14 @@ module "function" {
 
   environment_variables = {
     NODE_ENV = "production"
+    ENV_NAME = terraform.workspace
   }
 }
 
 module "gateway" {
-  # Lien mis à jour vers VOTRE module api-gateway
-  source = "../../../../../ch3/scripts/tofu/modules/api-gateway"
+  source = "github.com/brikis98/devops-book//ch3/tofu/modules/api-gateway"
 
-  name = var.name
+  name               = var.name
   function_arn       = module.function.function_arn
   api_gateway_routes = ["GET /"]
 }
