@@ -2,7 +2,7 @@ name: Tofu Apply
 on:
   push:                                                                      
     branches: ["main"]
-    paths: ["ch5/tofu/live/lambda-sample/**"]
+    paths: ["DevOps/ch5/scripts/tofu/live/lambda-sample/**"]
 jobs:
   apply:
     name: "Tofu Apply"
@@ -25,7 +25,7 @@ jobs:
 
       - name: tofu apply                                                     
         id: apply
-        working-directory: ch5/tofu/live/lambda-sample
+        working-directory: DevOps/ch5/scripts/tofu/live/lambda-sample
         run: |
           tofu init -no-color -input=false
           tofu apply -no-color -input=false -lock-timeout=60m -auto-approve

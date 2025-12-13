@@ -27,7 +27,7 @@ jobs:
 
       - name: tofu plan                                                     
         id: plan
-        working-directory: ch5/tofu/live/lambda-sample
+        working-directory: DevOps/ch5/scripts/tofu/live/lambda-sample
         run: |
           tofu init -no-color -input=false
           tofu plan -no-color -input=false -lock=false
