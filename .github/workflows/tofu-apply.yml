@@ -1,7 +1,7 @@
 name: Tofu Apply
 on:
   push:                                                                      
-    branches: ["main"]
+    branches: ["deployment-pipeline-test"]
     paths: ["DevOps/ch5/scripts/tofu/live/lambda-sample/**"]
 jobs:
   apply:
