@@ -3,7 +3,7 @@ name: Tofu Plan
 on:
   pull_request:                                                             
     branches: ["main"]
-    paths: ["ch5/tofu/live/lambda-sample/**"]
+    paths: ["DevOps/ch5/scripts/tofu/live/lambda-sample/**"]
 
 jobs:
   plan:
